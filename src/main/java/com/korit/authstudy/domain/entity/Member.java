@@ -14,12 +14,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "members_tb")
 public class Member {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "members_id")
+    @Id // Primary Key 설정
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto Incremental 설정
+    @Column(name = "member_id")
     private Integer id;
-
-    private String membername;
+    private String memberName;
     private String password;
     private String name;
     private String email;

@@ -1,9 +1,8 @@
 package com.korit.authstudy.service;
 
 import com.korit.authstudy.domain.entity.Member;
-import com.korit.authstudy.dto.MemberRegisterDto;
+import com.korit.authstudy.dto.MembersRegisterDto;
 import com.korit.authstudy.repository.MembersRepository;
-import com.korit.authstudy.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,9 +14,8 @@ public class MembersService {
     private final BCryptPasswordEncoder passwordEncoder;
     private final MembersRepository membersRepository;
 
-    public Member register(MemberRegisterDto dto) {
+    public Member register(MembersRegisterDto dto) {
         Member insertedMember = membersRepository.save(dto.toEntity(passwordEncoder));
         return insertedMember;
     }
-
 }

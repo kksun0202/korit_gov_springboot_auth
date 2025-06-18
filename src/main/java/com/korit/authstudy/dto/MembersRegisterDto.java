@@ -5,18 +5,17 @@ import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Data
-public class MemberRegisterDto {
-
-    private String membername;
+public class MembersRegisterDto {
+    private String username;
     private String password;
-    private String name;
+    private String fullName;
     private String email;
 
     public Member toEntity(BCryptPasswordEncoder passwordEncoder) {
         return Member.builder()
-                .membername(membername)
+                .memberName(username)
                 .password(passwordEncoder.encode(password))
-                .name(name)
+                .name(fullName)
                 .email(email)
                 .build();
     }
