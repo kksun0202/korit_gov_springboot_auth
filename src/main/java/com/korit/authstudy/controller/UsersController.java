@@ -8,6 +8,7 @@ import com.korit.authstudy.service.UsersService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -36,5 +37,10 @@ public class UsersController {
     public ResponseEntity<?> getLoginStatus(@RequestHeader("Authorization") String authorization) {
         System.out.println(authorization);
         return ResponseEntity.ok(jwtService.validLoginAccessToken(authorization));
+    }
+
+    @GetMapping("principal")
+    public ResponseEntity<?> getPrincipalUser() {
+        return ResponseEntity.ok(SecurityContextHolder.getContext().getAuthentication());
     }
 }
